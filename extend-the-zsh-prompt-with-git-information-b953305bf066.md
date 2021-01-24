@@ -4,7 +4,7 @@ Extend the ZSH Prompt with GIT information
 
 [![Oscar Mauricio Forero Carrillo](https://miro.medium.com/fit/c/96/96/1*RbLyPocQjcSragh4GPhpVA.jpeg)](https://oforero.medium.com/?source=post_page-----b953305bf066--------------------------------)[Oscar Mauricio Forero Carrillo](https://oforero.medium.com/?source=post_page-----b953305bf066--------------------------------)Follow[Dec 29, 2020](https://medium.com/udacity-course-companion/extend-the-zsh-prompt-with-git-information-b953305bf066?source=post_page-----b953305bf066--------------------------------) · 5 min read
 
-<img alt="Image for post" class="t u v gs aj" src="/_images/bmc_button.png" width="3000" height="3000" srcSet="https://miro.medium.com/max/552/1\*xBwkF0k0o\_hMUOBEOnbNCw.png 276w, https://miro.medium.com/max/1104/1\*xBwkF0k0o\_hMUOBEOnbNCw.png 552w, https://miro.medium.com/max/1280/1\*xBwkF0k0o\_hMUOBEOnbNCw.png 640w, https://miro.medium.com/max/1400/1\*xBwkF0k0o\_hMUOBEOnbNCw.png 700w" sizes="700px"/>
+<img alt="Image for post" class="t u v gs aj" src="/_images/bmc_button.png" width="3000" height="3000" srcSet="https://miro.medium.com/max/552/1\*xBwkF0k0o_hMUOBEOnbNCw.png 276w, https://miro.medium.com/max/1104/1\*xBwkF0k0o_hMUOBEOnbNCw.png 552w, https://miro.medium.com/max/1280/1\*xBwkF0k0o_hMUOBEOnbNCw.png 640w, https://miro.medium.com/max/1400/1\*xBwkF0k0o_hMUOBEOnbNCw.png 700w" sizes="700px"/>
 
 
 ![BMC Button](/assets/imgs/bmc_button.png)
@@ -41,7 +41,7 @@ Option 2: Make BASH the default shell
 
 The shell in \*nix system is customisable per user; we can change our default back to _BASH_.
 
-<img alt="Image for post" class="t u v gs aj" src="https://miro.medium.com/max/3156/1\*jpy\_kmhFmgdTdRjFJLbP\_w.gif" width="1578" height="1056" srcSet="https://miro.medium.com/max/552/1\*jpy\_kmhFmgdTdRjFJLbP\_w.gif 276w, https://miro.medium.com/max/1104/1\*jpy\_kmhFmgdTdRjFJLbP\_w.gif 552w, https://miro.medium.com/max/1280/1\*jpy\_kmhFmgdTdRjFJLbP\_w.gif 640w, https://miro.medium.com/max/1400/1\*jpy\_kmhFmgdTdRjFJLbP\_w.gif 700w" sizes="700px"/>
+<img alt="Image for post" class="t u v gs aj" src="https://miro.medium.com/max/3156/1\*jpy_kmhFmgdTdRjFJLbP_w.gif" width="1578" height="1056" srcSet="https://miro.medium.com/max/552/1\*jpy_kmhFmgdTdRjFJLbP_w.gif 276w, https://miro.medium.com/max/1104/1\*jpy_kmhFmgdTdRjFJLbP_w.gif 552w, https://miro.medium.com/max/1280/1\*jpy_kmhFmgdTdRjFJLbP_w.gif 640w, https://miro.medium.com/max/1400/1\*jpy_kmhFmgdTdRjFJLbP_w.gif 700w" sizes="700px"/>
 
 Note that changing the default login shell won’t change the currently running shell. We need to start a new window or tab to see the effect.
 
@@ -68,7 +68,7 @@ When running for the first time it is possible that we get a security warning:
 
 ```
 zsh compinit: insecure directories, run compaudit for list.  
-Ignore insecure directories and continue \[y\] or abort compinit \[n\]?
+Ignore insecure directories and continue [y] or abort compinit [n]?
 ```
 
 This means files are being loaded from directories with more permissive permissions than necessary.
@@ -86,10 +86,12 @@ The `git-prompt.sh` script included with GIT and downloadable from Udacity’s r
 This means we can use the same configuration as with BASH, but in the `.zshrc` file:
 
 ```
-source ~/.git-prompt.shsetopt PROMPT\_SUBST ; PS1='\[%n@%m %c$(\_\_git\_ps1 " (%s)")\]\\$ '
+source ~/.git-prompt.sh
+
+setopt PROMPT_SUBST ; PS1='[%n@%m %c$(__git_ps1 " (%s)")]\$ '
 ```
 
-This will show the branch in the prompt but without any colors.
+This will show the branch in the prompt but without any colours.
 
 <img alt="Image for post" class="t u v gs aj" src="https://miro.medium.com/max/3168/1\*VEbhVZ1fmQpCdP4TMOBjUQ.png" width="1584" height="428" srcSet="https://miro.medium.com/max/552/1\*VEbhVZ1fmQpCdP4TMOBjUQ.png 276w, https://miro.medium.com/max/1104/1\*VEbhVZ1fmQpCdP4TMOBjUQ.png 552w, https://miro.medium.com/max/1280/1\*VEbhVZ1fmQpCdP4TMOBjUQ.png 640w, https://miro.medium.com/max/1400/1\*VEbhVZ1fmQpCdP4TMOBjUQ.png 700w" sizes="700px"/>
 
@@ -107,32 +109,32 @@ autoload -Uz compinit && compinit
 Then we use the tool included with ZSH to communicate with source control systems:
 
 ```
-setopt prompt\_subst  
-autoload -Uz vcs\_info  
-zstyle ':vcs\_info:\*' stagedstr 'S'   
-zstyle ':vcs\_info:\*' unstagedstr 'U'   
-zstyle ':vcs\_info:\*' check-for-changes true  
-zstyle ':vcs\_info:\*' actionformats '%F{5}\[%F{2}%b%F{3}|%F{1}%a%F{5}\]%f '  
-zstyle ':vcs\_info:\*' formats \\  
-  '%F{5}\[%F{2}%b%F{5}\] %F{2}%c%F{3}%u%f'  
-zstyle ':vcs\_info:git\*+set-message:\*' hooks git-untracked  
-zstyle ':vcs\_info:\*' enable git   
+setopt prompt_subst  
+autoload -Uz vcs_info  
+zstyle ':vcs_info:\*' stagedstr 'S'   
+zstyle ':vcs_info:\*' unstagedstr 'U'   
+zstyle ':vcs_info:\*' check-for-changes true  
+zstyle ':vcs_info:\*' actionformats '%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '  
+zstyle ':vcs_info:\*' formats \\  
+  '%F{5}[%F{2}%b%F{5}] %F{2}%c%F{3}%u%f'  
+zstyle ':vcs_info:git\*+set-message:\*' hooks git-untracked  
+zstyle ':vcs_info:\*' enable git   
 +vi-git-untracked() {  
-  if \[\[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' \]\] && \\  
-  \[\[ $(git ls-files --other --directory --exclude-standard | sed q | wc -l | tr -d ' ') == 1 \]\] ; then  
-  hook\_com\[unstaged\]+='%F{1}?%f'  
+  if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \\  
+     [[ $(git ls-files --other --directory --exclude-standard | sed q | wc -l | tr -d ' ') == 1 ]] ; then  
+  hook_com[unstaged]+='%F{1}?%f'  
 fi  
 }  
 
 
-precmd () { vcs\_info }  
-PROMPT='%F{5}\[%F{2}%n%F{5}\] %F{3}%3~ ${vcs\_info\_msg\_0\_} %f%# '
+precmd () { vcs_info }  
+PROMPT='%F{5}[%F{2}%n%F{5}] %F{3}%3~ ${vcs_info_msg_0_} %f%# '
 ```
 
 This will show a prompt with the following format:
 
 ```
-\[user\] FQN folder \[branch\] \[Status Info\] %
+[user] FQN folder [branch] [Status Info] %
 ```
 
 The status info shows a yellow M for unstaged changes, a green M for staged changes, and a question mark `?` for untracked files.
