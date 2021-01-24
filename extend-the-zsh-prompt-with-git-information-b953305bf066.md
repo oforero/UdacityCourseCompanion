@@ -4,13 +4,11 @@ Extend the ZSH Prompt with GIT information
 
 [![Oscar Mauricio Forero Carrillo](https://miro.medium.com/fit/c/96/96/1*RbLyPocQjcSragh4GPhpVA.jpeg)](https://oforero.medium.com/?source=post_page-----b953305bf066--------------------------------)[Oscar Mauricio Forero Carrillo](https://oforero.medium.com/?source=post_page-----b953305bf066--------------------------------)Follow[Dec 29, 2020](https://medium.com/udacity-course-companion/extend-the-zsh-prompt-with-git-information-b953305bf066?source=post_page-----b953305bf066--------------------------------) · 5 min read
 
-<img alt="Image for post" class="t u v gs aj" src="https://miro.medium.com/max/6000/1\*xBwkF0k0o\_hMUOBEOnbNCw.png" width="3000" height="3000" srcSet="https://miro.medium.com/max/552/1\*xBwkF0k0o\_hMUOBEOnbNCw.png 276w, https://miro.medium.com/max/1104/1\*xBwkF0k0o\_hMUOBEOnbNCw.png 552w, https://miro.medium.com/max/1280/1\*xBwkF0k0o\_hMUOBEOnbNCw.png 640w, https://miro.medium.com/max/1400/1\*xBwkF0k0o\_hMUOBEOnbNCw.png 700w" sizes="700px"/>
+<img alt="Image for post" class="t u v gs aj" src="/_images/bmc_button.png" width="3000" height="3000" srcSet="https://miro.medium.com/max/552/1\*xBwkF0k0o\_hMUOBEOnbNCw.png 276w, https://miro.medium.com/max/1104/1\*xBwkF0k0o\_hMUOBEOnbNCw.png 552w, https://miro.medium.com/max/1280/1\*xBwkF0k0o\_hMUOBEOnbNCw.png 640w, https://miro.medium.com/max/1400/1\*xBwkF0k0o\_hMUOBEOnbNCw.png 700w" sizes="700px"/>
 
-[
 
-<img alt="Image for post" class="t u v gs aj" src="https://miro.medium.com/max/340/1\*Dpw8-hNGI2fDmosV4E8DVQ.png" width="170" height="37"/>
-
-](https://www.buymeacoffee.com/oforero)
+![BMC Button](/assets/imgs/bmc_button.png)
+[bmc](https://www.buymeacoffee.com/oforero)
 
 I am an Udacity mentor, and I helped many students move forward with their GitHub project.
 
@@ -125,8 +123,8 @@ zstyle ':vcs\_info:\*' enable git
   hook\_com\[unstaged\]+='%F{1}?%f'  
 fi  
 }  
-  
-  
+
+
 precmd () { vcs\_info }  
 PROMPT='%F{5}\[%F{2}%n%F{5}\] %F{3}%3~ ${vcs\_info\_msg\_0\_} %f%# '
 ```
